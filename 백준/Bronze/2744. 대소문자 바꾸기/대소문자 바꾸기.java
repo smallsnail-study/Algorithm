@@ -1,15 +1,16 @@
 import java.util.Scanner;
-
-public class Main {
+class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String str = sc.next();
+        char[] chars = str.toCharArray();
 
         for (int i = 0; i < str.length(); i++) {
-            if ('A' <= str.charAt(i) && str.charAt(i) <= 'Z')
-                System.out.print((char)('a' + str.charAt(i) - 'A'));
+            if ('A'<= chars[i] && chars[i] <= 'Z')
+                chars[i] = (char) (chars[i] - 'A' + 'a');
             else
-                System.out.print((char)('A' + str.charAt(i) - 'a'));
+                chars[i] = (char) (chars[i] - 'a' + 'A');
         }
+        System.out.print(chars);
     }
 }
