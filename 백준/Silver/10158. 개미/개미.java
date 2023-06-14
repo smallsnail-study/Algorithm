@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class Main {
+class Main{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int w = sc.nextInt();
@@ -9,10 +9,9 @@ class Main {
         int q = sc.nextInt();
         int t = sc.nextInt();
 
-        int timeX = t % (2 * w);
         int currentX = p;
         int deltaX = 1;
-
+        int timeX = t % (2 * w);
         while (timeX-- > 0) {
             if (currentX == w)
                 deltaX = -1;
@@ -21,10 +20,9 @@ class Main {
             currentX += deltaX;
         }
 
-        int timeY = t % (2 * h);
         int currentY = q;
         int deltaY = 1;
-
+        int timeY = t % (2 * h);
         while (timeY-- > 0) {
             if (currentY == h)
                 deltaY = -1;
