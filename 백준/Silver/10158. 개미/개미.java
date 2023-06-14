@@ -9,27 +9,12 @@ class Main{
         int q = sc.nextInt();
         int t = sc.nextInt();
 
-        int currentX = p;
-        int deltaX = 1;
-        int timeX = t % (2 * w);
-        while (timeX-- > 0) {
-            if (currentX == w)
-                deltaX = -1;
-            else if (currentX == 0)
-                deltaX = 1;
-            currentX += deltaX;
-        }
-
-        int currentY = q;
-        int deltaY = 1;
-        int timeY = t % (2 * h);
-        while (timeY-- > 0) {
-            if (currentY == h)
-                deltaY = -1;
-            else if (currentY == 0)
-                deltaY = 1;
-            currentY += deltaY;
-        }
+        int currentX = (p + t) % (2 * w);
+        int currentY = (q + t) % (2 * h);
+        if (currentX > w)
+            currentX = (2 * w) - currentX;
+        if (currentY > h)
+            currentY = (2 * h) - currentY;
 
         System.out.println(currentX + " " + currentY);
     }
