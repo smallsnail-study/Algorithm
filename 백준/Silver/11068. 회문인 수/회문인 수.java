@@ -4,10 +4,9 @@ class Main {
     public static int[] convertBase(int A, int B) {
         int len = 0, copyA = A;
         while (copyA > 0) {
-            copyA /= B;
+            copyA = copyA / B;
             len++;
         }
-
         int[] digit = new int[len];
         len = 0;
         while (A > 0) {
@@ -35,10 +34,7 @@ class Main {
             boolean ans = false;
             for (int i = 2; i <= 64; i++) {
                 int[] digit = convertBase(A, i);
-                if (isPalindrome(digit)) {
-                    ans = true;
-                    break;
-                }
+                if (isPalindrome(digit)) ans = true;
             }
             bw.write(ans ? "1" : "0");
             bw.newLine();
