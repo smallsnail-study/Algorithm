@@ -6,17 +6,18 @@ class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
+
         int N = Integer.parseInt(st.nextToken());
         int B = Integer.parseInt(st.nextToken());
 
-        StringBuilder ans = new StringBuilder();
+        StringBuffer ans = new StringBuffer();
         while (N > 0) {
-            int A = N % B;
-            if (A < 10) ans.append(A);
-            else ans.append((char) (A - 10 + 'A'));
+            int R = N % B;
+            if (R < 10) ans.append(R);
+            else ans.append((char) (R - 10 + 'A'));
             N = N / B;
         }
-        for (int i = ans.length() - 1; i >= 0 ; i--) {
+        for (int i = ans.length() - 1; i >= 0; i--) {
             bw.write(ans.charAt(i));
         }
         bw.flush();
