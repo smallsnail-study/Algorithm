@@ -1,24 +1,27 @@
 import java.io.*;
 
 class Main {
-    public static int[] convertBase(int A, int B) {
-        int len = 0, copyA = A;
-        while (copyA > 0) {
-            copyA = copyA / B;
+    public static int[] convertBase(int K, int B) {
+        // 주어진 수 K를 B진법으로 변환후 담을 배열의 크기를 구한다. K / B 의 크기
+        int len = 0, copyK = K;
+        while (copyK > 0) {
+            copyK = copyK / B;
             len++;
         }
-        int[] digit = new int[len];
+
+        // 주어진 수 K를 B진법으로 변환해서 배열 convert에 담는다.
+        int[] convert = new int[len];
         len = 0;
-        while (A > 0) {
-            digit[len++] = A % B;
-            A = A / B;
+        for (int i = 0; i < convert.length; i++) {
+            convert[len++] = K % B;
+            K = K / B;
         }
-        return digit;
+        return convert;
     }
 
-    public static boolean isPalindrome(int[] digit) {
-        for (int i = 0; i < digit.length / 2; i++) {
-            if (digit[i] != digit[digit.length - i - 1]) {
+    public static boolean isPalindrome(int[] convert) {
+        for (int i = 0; i < convert.length / 2; i++) {
+            if (convert[i] != convert[convert.length - i - 1]) {
                 return false;
             }
         }
@@ -28,13 +31,15 @@ class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         int T = Integer.parseInt(br.readLine());
-
         while (T-- > 0) {
-            int A = Integer.parseInt(br.readLine());
+            int K = Integer.parseInt(br.readLine());
             boolean ans = false;
             for (int i = 2; i <= 64; i++) {
-                int[] digit = convertBase(A, i);
-                if (isPalindrome(digit)) ans = true;
+                int[] convertNum = convertBase(K, i);
+                if (isPalindrome(convertNum)){
+                    ans = true;
+                    break;
+                }
             }
             bw.write(ans ? "1" : "0");
             bw.newLine();
