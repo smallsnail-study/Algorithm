@@ -1,8 +1,9 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 class Main {
-    public static void changeColor(char[][] board, int r1, int c1, int r2, int c2) {
+    public static void swap(char[][] board, int r1, int c1, int r2, int c2) {
         char tmp = board[r1][c1];
         board[r1][c1] = board[r2][c2];
         board[r2][c2] = tmp;
@@ -25,7 +26,6 @@ class Main {
         }
         return maxRow;
     }
-
     public static int findMaxColumn(char[][] board) {
         int N = board.length;
         int maxColumn = 0;
@@ -47,23 +47,22 @@ class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         char[][] board = new char[N][N];
-
         for (int i = 0; i < N; i++) {
-            board[i]= br.readLine().toCharArray();
+            board[i] = br.readLine().toCharArray();
         }
 
         int ans = 0;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 if (j + 1 < N && board[i][j] != board[i][j + 1]) {
-                    changeColor(board,i,j,i,j+1);
-                    ans = Math.max(ans, Math.max(findMaxColumn(board), findMaxRow(board)));
-                    changeColor(board,i,j,i,j+1);
+                    swap(board, i, j, i, j + 1);
+                    ans = Math.max(ans, Math.max(findMaxRow(board), findMaxColumn(board)));
+                    swap(board, i, j, i, j + 1);
                 }
                 if (i + 1 < N && board[i][j] != board[i + 1][j]) {
-                    changeColor(board,i,j,i+1,j);
-                    ans = Math.max(ans, Math.max(findMaxColumn(board),findMaxRow(board)));
-                    changeColor(board,i,j,i+1,j);
+                    swap(board, i, j, i + 1, j);
+                    ans = Math.max(ans, Math.max(findMaxRow(board), findMaxColumn(board)));
+                    swap(board, i, j, i + 1, j);
                 }
             }
         }
