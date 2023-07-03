@@ -8,8 +8,10 @@ class Main {
         int N = Integer.parseInt(br.readLine());
         String command = br.ready() ? br.readLine() : "";
 
+        // 로봇 팔의 이동여부를 확인할 boolean 배열
         boolean[][] passVertical = new boolean[N][N];
         boolean[][] passHorizontal = new boolean[N][N];
+        // 처음 로봇의 조각도를 올려놓는 위치는 항상 맨 왼쪽, 맨 위(0,0)
         int curR = 0, curC = 0;
         for (int i = 0; i < command.length(); i++) {
             char cmd = command.charAt(i);
@@ -19,7 +21,7 @@ class Main {
                 passVertical[curR-1][curC] = true;
                 curR--;
             } else if (cmd == 'D') {
-                if (curR== N-1) continue;
+                if (curR == N-1) continue;
                 passVertical[curR][curC] = true;
                 passVertical[curR+1][curC] = true;
                 curR++;
@@ -35,7 +37,7 @@ class Main {
                 curC++;
             }
         }
-        // 지나지않은 점은 '.' 표기
+
         for (int i = 0; i < N; i++) {
             String ans = "";
             for (int j = 0; j < N; j++) {
@@ -48,3 +50,9 @@ class Main {
         }
     }
 }
+
+// 시간복잡도 : O(max(N^2,L))
+// 아이디어 :
+// 1.명령어의 최소길이가 정해지지 않은 경우 빈 문자열이 주어질 수 있으므로 주의하자! RuntimeError 발생 가능
+// 2. 구하려는 값을 확인해서 답으로 만드는 경우 -> boolean 배열 활용
+// 자료구조 : 시뮬레이션
