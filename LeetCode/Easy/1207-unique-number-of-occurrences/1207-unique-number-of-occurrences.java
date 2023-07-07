@@ -1,17 +1,15 @@
-import java.util.Arrays;
-
 class Solution {
     public boolean uniqueOccurrences(int[] arr) {
-        Arrays.sort(arr);
-        int[] cntArr = new int[2001];
-        
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < arr.length; i++) {
-            cntArr[arr[i] + 1000]++;
+            Integer num = arr[i];
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
 
-        Arrays.sort(cntArr);
-        for (int i = 0; i < cntArr.length-1; i++) {
-            if (cntArr[i] > 0 && cntArr[i] == cntArr[i+1]) return false;
+        Set<Integer> set = new HashSet<>();
+        for (Map.Entry<Integer, Integer> num : map.entrySet()) {
+            if (!set.add(num.getValue())) 
+                return false;
         }
         return true;
     }
