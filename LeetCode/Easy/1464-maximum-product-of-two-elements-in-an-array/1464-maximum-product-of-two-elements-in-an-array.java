@@ -5,8 +5,6 @@ class Solution {
         for (int i = 0; i < nums.length; i++)
             q.offer(nums[i]);
         
-        int i = q.poll();
-        int j = q.poll();
-        return (i - 1) * (j - 1);
+        return (q.poll()- 1) * (q.poll() - 1);
     }
 }
