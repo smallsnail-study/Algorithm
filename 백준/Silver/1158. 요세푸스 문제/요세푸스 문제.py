@@ -27,7 +27,7 @@ class LinkedList:
         return node
 
     # LinkedList의 해당 index값을 삭제한다.
-    def delete_Node(self, index):
+    def delete_node(self, index):
         if index == 0:
             del_node = self.head.data
             self.head = self.head.next
@@ -54,7 +54,7 @@ while Link.head is not None:
     # idx %= N(남이 있는 사람 수로 나눈 나머지 값)으로 설정한다.
     idx %= N
     # answer 에 LinkedList의 idx번째 노드의 값을 넣고 LinkedList의 idx번째 노드를 삭제하단.
-    answer.append(Link.delete_Node(idx))
+    answer.append(Link.delete_node(idx))
     # idx += (k-1)로 설정한다.(오른쪽으로 3번 이동)
     idx += (K - 1)
     # 남아있는 사람의 수 -= 1이다.
