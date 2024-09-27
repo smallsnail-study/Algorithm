@@ -2,7 +2,7 @@ def solution(answers):
     pattern1 = [1,2,3,4,5]
     pattern2 = [2,1,2,3,2,4,2,5]
     pattern3 = [3,3,1,1,2,2,4,4,5,5]
-    scores = [0, 0, 0]
+    scores = [0,0,0]
     result = []
     
     for idx, answer in enumerate(answers):
@@ -15,5 +15,6 @@ def solution(answers):
     
     for idx, s in enumerate(scores):
         if s == max(scores):
-            result.append(idx+1)
+            result.append(idx + 1)
+        
     return result
