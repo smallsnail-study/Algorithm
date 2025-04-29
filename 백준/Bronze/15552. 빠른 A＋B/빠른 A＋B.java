@@ -6,6 +6,7 @@ class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         
         int n = Integer.parseInt(br.readLine());
+        
         while(n-- > 0) {
             String[] nums = br.readLine().split(" ");
             int a = Integer.parseInt(nums[0]);
