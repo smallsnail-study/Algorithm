@@ -1,11 +1,11 @@
-N, M = map(int, input().split())
+n, m = map(int, input().split())
 
-A = [list(map(int, input().split())) for _ in range(N)]
-B = [list(map(int, input().split())) for _ in range(N)]
+a = [list(map(int, input().split())) for _ in range(n)]
+b = [list(map(int, input().split())) for _ in range(n)]
 
-for i in range(N):
+for i in range(n):
     result_row = []
-    for j in range(M):
-        result_row.append(A[i][j] + B[i][j])
-        
+    for j in range(m):
+        result_row.append(a[i][j] + b[i][j])
+    
     print(' '.join(map(str, result_row)))
