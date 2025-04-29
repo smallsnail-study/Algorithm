@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 class Main {
     public static void main(String[] args) {
@@ -9,12 +9,12 @@ class Main {
             if (str.equals("#"))
                 break;
             
-            int vowelCount = 0;
+            int count = 0;
             for (char c : str.toCharArray()) {
                 if (isVowel(c))
-                    vowelCount++;
+                    count++;
             }
-            System.out.println(vowelCount);
+            System.out.println(count);
         }
     }
     
