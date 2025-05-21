@@ -1,6 +1,7 @@
 import java.io.*;
 
 class Main {
+    static StringBuilder sb = new StringBuilder();
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
@@ -9,16 +10,13 @@ class Main {
         for (int i = 0; i < n; i++) {
             String line = br.readLine();
             for (int j = 0; j < n; j++) {
-                matrix[i][j] = line.charAt(j) - '0'; // 문자를 숫자로 변환
+                matrix[i][j] = line.charAt(j) - '0';
             }
         }
-
         quadtreeCompress(matrix, 0, 0, n);
-        System.out.println(sb.toString());
+        System.out.print(sb.toString());
     }
-
-    static StringBuilder sb = new StringBuilder();
-
+    
     private static int isUniform(int[][] matrix, int x, int y, int size) {
         int firstColor = matrix[x][y];
 
@@ -33,9 +31,9 @@ class Main {
     }
 
     private static void quadtreeCompress(int[][] matrix, int x, int y, int size) {
-        int state = isUniform(matrix, x, y, size);
-        if (state != -1) {
-            sb.append(state);
+        int color = isUniform(matrix, x, y, size);
+        if (color != -1) {
+            sb.append(color);
             return;
         }
 
