@@ -1,35 +1,32 @@
 import java.util.*;
 import java.io.*;
 
-// The main method must be in a class named "Main".
 class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int N = Integer.parseInt(br.readLine());
-        Deque<Integer> deque = new LinkedList<>();
+
+        LinkedList<Integer> deque = new LinkedList<>();
 
         while (N-- > 0) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             String cmd = st.nextToken();
-            
             switch (cmd) {
                 case "push_front":
-                    int numFront = Integer.parseInt(st.nextToken());
-                    deque.offerFirst(numFront);
+                    deque.addFirst(Integer.parseInt(st.nextToken()));
                     break;
 
                 case "push_back":
-                    int numBack = Integer.parseInt(st.nextToken());
-                    deque.offerLast(numBack);
+                    deque.addLast(Integer.parseInt(st.nextToken()));
                     break;
 
                 case "pop_front":
                     if (deque.isEmpty()) {
                         bw.write("-1\n");
                     } else {
-                        bw.write(deque.pollFirst() + "\n");
+                        bw.write(deque.removeFirst() + "\n");
                     }
                     break;
 
@@ -37,7 +34,7 @@ class Main {
                     if (deque.isEmpty()) {
                         bw.write("-1\n");
                     } else {
-                        bw.write(deque.pollLast() + "\n");
+                        bw.write(deque.removeLast() + "\n");
                     }
                     break;
 
@@ -57,7 +54,7 @@ class Main {
                     if (deque.isEmpty()) {
                         bw.write("-1\n");
                     } else {
-                        bw.write(deque.peekFirst() + "\n");
+                        bw.write(deque.getFirst() + "\n");
                     }
                     break;
 
@@ -65,7 +62,7 @@ class Main {
                     if (deque.isEmpty()) {
                         bw.write("-1\n");
                     } else {
-                        bw.write(deque.peekLast() + "\n");
+                        bw.write(deque.getLast() + "\n");
                     }
                     break;
             }
