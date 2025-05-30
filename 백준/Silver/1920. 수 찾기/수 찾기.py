@@ -1,16 +1,11 @@
 import sys
-from bisect import *
+read_line = sys.stdin.readline
 
-n = int(sys.stdin.readline())
-arr = list(map(int, sys.stdin.readline().split()))
-arr.sort()
+n = int(read_line())
+nums = set(map(int, read_line().split()))
 
-m = int(sys.stdin.readline())
-queries = list(map(int, sys.stdin.readline().split()))
+m = int(read_line())
+query = list(map(int, read_line().split()))
 
-for query in queries:
-    i = bisect_left(arr, query)
-    if i != len(arr) and arr[i] == query:
-        print(1)
-    else:
-        print(0)
+for num in query:
+    print(1 if num in nums else 0)
