@@ -1,17 +1,17 @@
 import sys
+read_line = sys.stdin.readline
 
-N = int(sys.stdin.readline())
-arr = list(map(int, sys.stdin.readline().split()))
+n = int(read_line())
+nums = list(map(int, read_line().split()))
 
-arr_unique = list(set(arr))
-arr_unique.sort()
+sorted_unique_nums = sorted(set(nums))
 
-mapper = {}
-for i, ele in enumerate(arr_unique):
-    mapper[ele] = i
+num_to_idx = {}
+for idx, num in enumerate(sorted_unique_nums):
+    num_to_idx[num] = idx
 
-ans = [0] * N
-for i, ele in enumerate(arr):
-   ans[i] = mapper[ele]
+compressed_nums = []
+for num in nums:
+    compressed_nums.append(num_to_idx[num])
 
-print(*ans)
+print(*compressed_nums)
