@@ -1,31 +1,28 @@
-import java.io.*;
-import java.util.StringTokenizer;
+import java.util.*;
 
 class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        int n = Integer.parseInt(br.readLine());
-        int[] a = new int[n];
-        StringTokenizer st = new StringTokenizer(br.readLine());
-
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
         for (int i = 0; i < n; i++) {
-            a[i] = Integer.parseInt(st.nextToken());
+            arr[i] = sc.nextInt();
         }
-
-        int x = Integer.parseInt(br.readLine());
-        boolean[] exist = new boolean[1000000];
-        for (int i = 0; i < n; i++) {
-            exist[a[i]] = true;
+        int target = sc.nextInt();
+        System.out.print(countPairs(arr, target));
+    }
+    
+    private static int countPairs(int[] arr, int target) {
+        Set<Integer> seen = new HashSet<>();
+        int count = 0;
+        
+        for(int num : arr) {
+            int complement = target - num;
+            if (seen.contains(complement)) {
+                count++;
+            }
+            seen.add(num);
         }
-
-        int ans = 0;
-        for (int i = 0; i < n; i++) {
-            int pairValue = x - a[i];
-            if (1<= pairValue && pairValue <= 1000000)
-                ans += exist[pairValue]?1:0;
-        }
-        System.out.println(ans / 2);
+        return count;
     }
 }
