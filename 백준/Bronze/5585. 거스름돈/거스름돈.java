@@ -10,14 +10,9 @@ class Main {
         int[] coins = {500, 100, 50, 10, 5, 1};
         int count = 0;
         
-        while (change > 0) {
-            for (int coin : coins) {
-                if (coin <= change) {
-                    change -= coin;
-                    count++;
-                    break;
-                }
-            }
+        for (int coin : coins) {
+            count += change / coin;
+            change %= coin;
         }
         System.out.print(count);
     }
